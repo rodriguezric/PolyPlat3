@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://scenes/ESCQuit.tscn" type="PackedScene" id=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+margin_right = 512.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 512, 150 )
+
+[node name="Label" type="Label" parent="VBoxContainer/CenterContainer"]
+margin_left = 218.0
+margin_top = 68.0
+margin_right = 294.0
+margin_bottom = 82.0
+text = "POLYPLAT3!"
+
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 154.0
+margin_right = 512.0
+margin_bottom = 198.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer2"]
+margin_left = 231.0
+margin_right = 281.0
+margin_bottom = 44.0
+
+[node name="StartButton" type="Button" parent="VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_right = 50.0
+margin_bottom = 20.0
+text = "START"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer/CenterContainer2/VBoxContainer"]
+margin_top = 24.0
+margin_right = 50.0
+margin_bottom = 44.0
+text = "QUIT"
+
+[node name="Global Inputs" type="Node" parent="."]
+
+[node name="ESCQuit" parent="Global Inputs" instance=ExtResource( 2 )]
+[connection signal="pressed" from="VBoxContainer/CenterContainer2/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer2/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
